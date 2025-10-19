@@ -124,6 +124,8 @@ export default function renderMenu() {
                 userSettings.states.contrast = isSelected ? key : false;
                 enableContrast(userSettings.states.contrast);
 
+                saveUserSettings();
+
                 return;
             }
             
