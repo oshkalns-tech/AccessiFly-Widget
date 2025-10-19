@@ -3,7 +3,7 @@ export default interface IToolConfig {
     selector?: string,
     childrenSelector?: string[],
     styles?: {
-        [key: string]: any
+        [key: string]: unknown
     },
     css?: string,
     enable?: boolean

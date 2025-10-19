@@ -8,7 +8,7 @@ export default function addStylesheet({
     css
 }: IAddStylesheetArgs) {
     if(css) {
-        let style = document.getElementById(id || '') || document.createElement('style');
+        const style = document.getElementById(id || '') || document.createElement('style');
         style.innerHTML = css;
         if(!style.id) {
             style.id = id;

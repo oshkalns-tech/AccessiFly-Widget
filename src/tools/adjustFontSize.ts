@@ -15,7 +15,7 @@ export default function adjustFontSize(multiply:number = 1) {
             }
 
             // Get the original font size
-            let orgFontSize = Number(el.dataset.aswOrgFontSize) || parseInt(window.getComputedStyle(el).fontSize);
+            const orgFontSize = Number(el.dataset.aswOrgFontSize) || parseInt(window.getComputedStyle(el).fontSize);
 
             // If no font size stored in data, set it now
             if (!el.dataset.aswOrgFontSize) {

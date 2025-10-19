@@ -62,10 +62,10 @@ export interface ILanguage {
 
 export const LANGUAGE_DICTIONARY: Record<string, ILanguage> = {};
 
-// @ts-ignore
+// @ts-expect-error"
 export async function loadLanguages() {
   for (const locale of locales) {
-    // @ts-ignore
+    // @ts-expect-error"
     LANGUAGE_DICTIONARY[locale] = (await import(`../locales/${locale}.json`)).default;
   }
 }

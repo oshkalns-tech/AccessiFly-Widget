@@ -65,10 +65,11 @@ function speakText(text) {
 
 
 
-export default function screenReader(enable = false) {
+export default function screenReader() {
   return;
+  /*
   if (enable) {
-    (window as any).__asw__onClickScreenReader = (event) => {
+    window.__asw__onClickScreenReader = (event) => {
       var clickedElement = event.target;
 
       if (!["BODY", "HEAD", "HTML"].includes(clickedElement.nodeName)) {
@@ -78,11 +79,12 @@ export default function screenReader(enable = false) {
       }
     }
 
-    document.addEventListener('click', (window as any).__asw__onClickScreenReader);
+    document.addEventListener('click', window.__asw__onClickScreenReader);
   } else {
-    if ((window as any).__asw__onClickScreenReader) {
-      document.removeEventListener('click', (window as any).__asw__onClickScreenReader);
-      delete (window as any).__asw__onClickScreenReader;
+    if (window.__asw__onClickScreenReader) {
+      document.removeEventListener('click', window.__asw__onClickScreenReader);
+      delete window.__asw__onClickScreenReader;
     }
   }
+    */
 }
