@@ -14,21 +14,21 @@ export default function readingGuide(enable=false) {
             const rgBottom: HTMLElement = guide.querySelector('.asw-rg-bottom');
             const margin = 20;
 
-            (window as any).__asw__onScrollReadableGuide = (event) => {
+            window.__asw__onScrollReadableGuide = (event) => {
                 rgTop.style.height = `${event.clientY - margin}px`;
                 rgBottom.style.height = `${window.innerHeight - event.clientY - (margin * 2)}px`;
             }
 
-            document.addEventListener('mousemove', (window as any).__asw__onScrollReadableGuide, { passive: false });
+            document.addEventListener('mousemove', window.__asw__onScrollReadableGuide, { passive: false });
             
             document.body.appendChild(guide);
         }
     } else {
         guide?.remove();
 
-        if((window as any).__asw__onScrollReadableGuide) {
-            document.removeEventListener('mousemove', (window as any).__asw__onScrollReadableGuide);
-            delete (window as any).__asw__onScrollReadableGuide;
+        if(window.__asw__onScrollReadableGuide) {
+            document.removeEventListener('mousemove', window.__asw__onScrollReadableGuide);
+            delete window.__asw__onScrollReadableGuide;
         }
     }
 }

@@ -1,4 +1,4 @@
-export let pluginConfig = {
+export const pluginConfig = {
   lang: 'en',
   position: 'bottom-left',
   offset: [20, 20],

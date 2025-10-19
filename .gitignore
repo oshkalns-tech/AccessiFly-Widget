@@ -3,6 +3,8 @@ node_modules/
 
 # Ignore compiled output
 dist/
+/.env
+.DS_Store
 
 # Ignore any temporary files
 *.log

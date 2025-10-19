@@ -1,7 +1,7 @@
 export interface ISettingsStates {
     fontSize?: number,
     contrast?: string,
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 export interface ISettings {

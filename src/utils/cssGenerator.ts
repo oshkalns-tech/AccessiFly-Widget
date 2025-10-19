@@ -8,8 +8,8 @@ export function generateCSS(styles: object): string {
     let css = "";
 
     if(styles) {
-        for(let key in styles) {
-            let prefixes = propertiesNeedPrefix.includes(key) ? browserPrefixes : [""];
+        for(const key in styles) {
+            const prefixes = propertiesNeedPrefix.includes(key) ? browserPrefixes : [""];
             prefixes.forEach((prefix: string) => {
                 css += `${prefix}${key}:${styles[key]} !important;`;
             })
@@ -60,15 +60,15 @@ export function generateCSSFromConfig(config: IToolConfig): string {
 }
 
 export function injectToolCSS(config: IToolConfig) {
-    let {
+    const {
         id="",
         enable=false
     } = config;
 
-    let toolId = `asw-${ id }`
+    const toolId = `asw-${ id }`
 
     if(enable) {
-        let css = generateCSSFromConfig(config);
+        const css = generateCSSFromConfig(config);
 
         addStylesheet({
             css, 

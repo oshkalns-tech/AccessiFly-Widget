@@ -6,6 +6,7 @@ export function saveStorageData(key, value) {
     try {
         localStorage.setItem(key, jsonValue);
     } catch (e) {
+        console.error(e);
         setCookie(key, jsonValue);
     }
 }
@@ -16,12 +17,14 @@ export function getStorageData(key) {
     try {
         data = localStorage.getItem(key);
     } catch (e) {
+        console.error(e);
         data = getCookie(key);
     }
 
     try {
         return JSON.parse(data);
     } catch (e) {
+        console.error(e);
         return {};
     }
 }

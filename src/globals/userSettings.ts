@@ -1,6 +1,6 @@
 import { getStorageData, saveStorageData } from "@/storage";
 
-export let userSettings = {
+export const userSettings = {
   lang: undefined,
   position: undefined,
   states: {}
