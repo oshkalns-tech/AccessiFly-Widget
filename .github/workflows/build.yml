@@ -1,27 +1,39 @@
 name: Build Widget
 
 on:
-  workflow_dispatch:        # Adds the manual run option
+  workflow_dispatch:        # Allows manual runs via the GitHub Actions tab
   push:
-    branches: [ "main" ]    # Still runs automatically on push
+    branches: [ "master" ]  # Adjust if your default branch is "main"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [18.x]  # Compatible Node version for esbuild
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: node build.js --target=umd --minify
-      - name: Upload dist directory
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run esbuild
+        # This runs your actual build configuration file (esbuild.config.js)
+        run: node esbuild.config.js
+
+      - name: Upload built dist folder
         uses: actions/upload-artifact@v4
         with:
           name: built-widget
           path: dist/
+
+      - name: Display build output
+        run: ls -R dist
