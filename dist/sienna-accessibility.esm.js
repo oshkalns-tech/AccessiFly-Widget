@@ -2588,6 +2588,7 @@ var globImport_locales_json = __glob({
 
 // src/i18n/Languages.ts
 var LANGUAGES = [
+  { code: "lv", label: "Latvie\u0161u (Latvian)" },
   { code: "am", label: "\u12A0\u121B\u122D\u129B (Amharic)" },
   { code: "ar", label: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (Arabic)" },
   { code: "bg", label: "\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438 (Bulgarian)" },
