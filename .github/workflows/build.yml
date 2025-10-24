@@ -1,9 +1,9 @@
 name: Build Widget
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:        # Allows manual run
   push:
-    branches: [ "master" ]
+    branches: [ "master" ]  # Adjust if using 'main'
 
 jobs:
   build:
@@ -23,15 +23,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run esbuild build
+      - name: Run esbuild
         run: node esbuild.config.js
 
-      - name: Commit and push build output
+      # Optional sanity check
+      - name: List output folder
+        run: ls -R dist || echo "No files built"
+
+      # Commit and push built files
+      - name: Commit and push dist
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/
+          git add -f dist/
           git commit -m "Auto-build widget from GitHub Actions" || echo "No changes to commit"
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Upload dist as workflow artifact (optional backup)
+      - name: Upload dist files
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-widget
+          path: dist/
