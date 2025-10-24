@@ -1,7 +1,9 @@
 name: Build Widget
+
 on:
+  workflow_dispatch:        # Adds the manual run option
   push:
-    branches: [ "main" ]
+    branches: [ "main" ]    # Still runs automatically on push
 
 jobs:
   build:
